@@ -1,12 +1,13 @@
 
 # coding: utf-8
 
-# In[9]:
+# In[14]:
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import platform
+import os
 
 data = input('enter the data path ')#'C:\Users\yobin\Desktop\Ecommerce Purchases.csv'
 def scatter(data):
@@ -45,10 +46,8 @@ def scatter(data):
     print(len)
     a = 0
 
-    #get the account name of the computer
-    account_name = platform.node()
-    #user double slash to avoid the slash meaning as it has separate meaning
-    path = r'C:\\Users\\'+account_name+'\\Downloads\\'
+    #get the path of Downloads
+    path_name = os.path.expanduser('~\Downloads')
 
 
     def plot_rest(a):
@@ -75,7 +74,7 @@ def scatter(data):
             plt.rcParams["figure.figsize"] = [xx,yy]
             plt.show()
             figure = set_col + ' vs ' + first_col[a]
-            fig.savefig(path+figure+'.png')
+            fig.savefig(path_name+'\\'+figure+'.png')
     #except 0 till end column will be plotted
     if arry_no==0:
         plot_rest(a)
@@ -95,7 +94,7 @@ def scatter(data):
         plt.rcParams["figure.figsize"] = [xxx,yyy]
         plt.show()
         fig_0 = set_col + " vs " + first_col[a]
-        fig.savefig(path+fig_0+'.png')
+        fig.savefig(path_name+'\\'+fig_0+'.png')
     #for rest of the plotting call plot_rest
         plot_rest(a)
 scatter(data)
