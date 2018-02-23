@@ -1,0 +1,46 @@
+
+1. Create an account at : https://pypi.org with following
+    username : <my_user_name>
+    password: <my_password>
+
+2. Create a file called ".pypirc" in the root folder (~ or / or C:)
+
+    $ nano ~/.pypirc
+      [distutils]
+      index-servers =
+      pypi
+
+      [pypi]
+      repository : https://pypi.python.org/pypi
+      username : <my_user_name>
+      password : <my_password>
+
+      (Ctrl+S the, y and then press 'ENTER')
+
+    $_
+
+    [Ref : https://github.com/pypa/setuptools/issues/941]
+
+3. Follow the instructions at :
+    https://python-packaging.readthedocs.io/en/latest/minimal.html
+
+4. Also, create a file called ".gitignore" in the cloned GitHub directory
+   and put the following in it :
+
+    $ nano .gitignore
+      # Compiled python modules.
+      *.pyc
+
+      # Setuptools distribution folder.
+      /dist/
+
+      # Python egg metadata, regenerated from source files by setuptools.
+      /*.egg-info
+
+    (Ctrl+S the, y and then press 'ENTER')
+
+5. To install a package run :
+    pip install <package_name>
+
+6. To update a package run :
+    pip install --upgrade <package_name>
