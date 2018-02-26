@@ -43,6 +43,7 @@ def box(data):
     # path_name = os.path.expanduser('~\Downloads')
 
     a = 1
+    f = 0
     for num in first_col:
         fig = plt.figure()
         sns.set_style("whitegrid")
@@ -53,7 +54,8 @@ def box(data):
         a = a + 1
         # fig.savefig(path_name+'\\'+num+'.png')
         #fig.savefig(num + '.png')
-        fig.savefig(fpath + '\\' + num + '.png')
+        fig.savefig(fpath + '\\' + 'picture' + str(f) + '.png')
+        f = f+1
         plt.close()
 
 
