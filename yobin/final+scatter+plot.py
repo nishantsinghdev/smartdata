@@ -33,7 +33,7 @@ def scatter(data):
 
     #get the path of Downloads
     #path_name = os.path.expanduser('~\Downloads')
-
+    a = 0
     for col_name in first_col:
         if col_name!=set_col:
             #for each png figure create fig separetely
@@ -46,9 +46,10 @@ def scatter(data):
             yy = int_y
             plt.rcParams["figure.figsize"] = [xx,yy]
             plt.show()
-            figure = set_col + ' vs ' + col_name
+            #figure = set_col + ' vs ' + col_name
             #fig.savefig(path_name+'\\'+figure+'.png')
-            fig.savefig(figure+'.png')
+            fig.savefig('figure'+str(a)+'.png')
+            a = a+1
             
 scatter(data)
 
