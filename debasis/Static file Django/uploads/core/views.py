@@ -7,12 +7,15 @@ from uploads.core.forms import DocumentForm
 from uploads.core import testdemo as tst
 from uploads.core import ssd_scatterplott as ss
 from uploads.core import BoxPlot as box
+from uploads.core import clean as cl
 
 def home(request):
+    ### get all the files from documents
     documents = Document.objects.all()
-    return render(request, 'core/home.html', { 'documents': documents })
+    #print(Document.uploaded_at)
+    return render(request, 'core/home.html', {'documents': documents})
 
-
+### Display all plots
 def display(request):
     import os.path
     my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
@@ -20,32 +23,43 @@ def display(request):
     imglist = os.listdir(spath)
     newlist = list()
     for filename in imglist:
-        newlist.append('/static/images/'+filename)
+        i = str('/static/images/'+filename)
+        newlist.append(i)
     context = {
         'list': newlist,
     }
-    print(list)
+    #print(list)
     return render(request, 'core/images.html', context)
 
+### Generates plots
 def invoke(request):
-    path = 'C:\\Users\\Debasis Pramanik\\Desktop\\Ecommerce Purchases.csv'
-    tst.scatter(path)
-    return render(request, 'core/done.html')
 
-def ssd(request):
-    path = 'C:\\Users\\Debasis Pramanik\\Desktop\\Ecommerce Purchases.csv'
-    ss.histo(path)
-    return render(request, 'core/done.html')
-
-def boxplot(request):
     my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-    path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
-    box.box(path)
-    return render(request, 'core/done.html')
+    spath = os.path.join(my_path, 'documents')
+    list = os.listdir(spath)
+    leng = list.__len__()
+    if leng == 0:
+        return render(request, 'core/noData.html')
+    else:
+        get = list[0]
+        path = os.path.join(my_path + '\documents' + '\\' + get)
 
+
+        tst.scatter(path)
+        #creates Scatter Plots
+
+        ss.histo(path)
+        #creates dist plot
+
+        box.box(path)
+        #creates boxplot
+        #return render(request, 'core/done.html')
+        return redirect('home')
 
 
 def model_form_upload(request):
+    cl.cleanDoc()
+    cl.cleanImg()
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():

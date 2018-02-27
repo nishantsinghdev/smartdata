@@ -4,7 +4,7 @@ import csv
 import os.path
 my_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
 path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
-fpath = os.path.join(my_path, 'static/images/boxplot')
+fpath = os.path.join(my_path, 'static/images')
 
 #print(my_path)
 
@@ -59,4 +59,4 @@ def box(data):
         plt.close()
 
 
-box(data)
+#box(data)

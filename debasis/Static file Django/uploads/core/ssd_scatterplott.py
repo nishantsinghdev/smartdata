@@ -4,7 +4,7 @@ import csv
 import os.path
 my_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
 path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
-fpath = os.path.join(my_path, 'static/images/dist')
+fpath = os.path.join(my_path, 'static/images')
 
 import pandas as pd
 import numpy as np
@@ -61,4 +61,4 @@ def histo(data):
         d = d+1
         plt.close()
         #fig.savefig(num+'.png')
-#histo('C:\\DJANGO_Projects\\file_upload\\simple-file-upload-master\\documents\\Ecommerce_Purchases.csv')
+#histo(data)

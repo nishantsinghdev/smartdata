@@ -1,21 +1,45 @@
-{% extends 'base.html' %}
-{% load static %}
-{% load staticfiles %}
+
+
+{% load static from staticfiles%}
 
 {% block content %}
- <table>
-<tr>
-       <td><img src="{% static 'images/image2.png' %}" alt="My image"/></td>
-        <td><img src="{% static 'images/images.png' %}" alt="My image"/></td>
-         <img src="{{MEDIA_URL}}{{images.png}}">
+    <div class="gallery">
+       {% for img in list %}
+               <!-- <img src={{img}} alt="scatter" width="300" height="200" class="pointer"> -->
+                <div class="img-w"><img src={{img}} alt="" /></div>
 
-</tr>
-   <tr>
-        {% for img in list %}
-           ﻿
-            <td><img src={{img}} alt="My image"/></td>
-		{% endfor %}
-   </tr>
- </table>
-
+         {% endfor %}
+    </div>
 {% endblock %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>Image gallery with zoom</title>
+
+
+
+      <link rel="stylesheet" href="/static/css/style.css">
+
+
+</head>
+
+
+<body>
+<!--
+  <div class="gallery">
+  <div class="img-w"><img src="https://images.unsplash.com/photo-1485766410122-1b403edb53db?dpr=1&auto=format&fit=crop&w=1500&h=846&q=80&cs=tinysrgb&crop=" alt="" /></div>
+  <div class="img-w"><img src="https://images.unsplash.com/photo-1485793997698-baba81bf21ab?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" alt="" /></div>
+  <div class="img-w"><img src="https://images.unsplash.com/photo-1485871800663-71856dc09ec4?dpr=1&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=" alt="" /></div>
+  <div class="img-w"><img src="https://images.unsplash.com/photo-1485871882310-4ecdab8a6f94?dpr=1&auto=format&fit=crop&w=1500&h=2250&q=80&cs=tinysrgb&crop=" alt="" /></div>
+  <div class="img-w"><img src="https://images.unsplash.com/photo-1485872304698-0537e003288d?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" alt="" /></div>
+  <div class="img-w"><img src="https://images.unsplash.com/photo-1485872325464-50f17b82075a?dpr=1&auto=format&fit=crop&w=1500&h=1000&q=80&cs=tinysrgb&crop=" alt="" /></div>
+  <div class="img-w"><img src="https://images.unsplash.com/photo-1470171119584-533105644520?dpr=1&auto=format&fit=crop&w=1500&h=886&q=80&cs=tinysrgb&crop=" alt="" /></div>
+
+</div>
+-->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
+
+    <script src="/static/js/index.js"></script>
+
+</body>
+
