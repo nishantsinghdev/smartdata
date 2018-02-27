@@ -1,13 +1,13 @@
 
 # coding: utf-8
 
-# In[7]:
+# In[21]:
 
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-import platform
-import os
+#import platform
+#import os
 
 data = input('enter the data path ')#'C:\Users\yobin\Desktop\Ecommerce Purchases.csv'
 def scatter(data):
@@ -25,8 +25,11 @@ def scatter(data):
     
     #get columns list
     first_col = list(pp)
+        
     #print(first_col)
-    set_col = first_col[1]
+    #set_col = first_col[1]
+    col_len = len(first_col)
+    ar_len = col_len-1
 
     int_x = 10
     int_y = 10
@@ -34,14 +37,20 @@ def scatter(data):
     #get the path of Downloads
     #path_name = os.path.expanduser('~\Downloads')
     a = 0
+    i=0
     for col_name in first_col:
-        if col_name!=set_col:
+        indx_colno = first_col.index(col_name)
+        last_no = indx_colno+1
+        while last_no <= ar_len :
+            next_col = first_col[last_no]
+            #print(col_name + ' vs ' + next_col)
+            last_no = last_no + 1
             #for each png figure create fig separetely
             fig = plt.figure()
-            plt.scatter(pp[set_col],pp[col_name])
-            plt.xlabel(set_col)
+            plt.scatter(pp[col_name],pp[next_col])
+            plt.xlabel(next_col)
             plt.ylabel(col_name)
-            plt.title(set_col + ' vs ' + col_name)
+            plt.title( col_name + ' vs ' + next_col)
             xx = int_x
             yy = int_y
             plt.rcParams["figure.figsize"] = [xx,yy]
@@ -50,7 +59,6 @@ def scatter(data):
             #fig.savefig(path_name+'\\'+figure+'.png')
             fig.savefig('figure'+str(a)+'.png')
             a = a+1
-            
 scatter(data)
 
 
