@@ -1,11 +1,10 @@
 
 ################yobin/ final+scatter+plot.py
-
 import csv
 import os.path
-my_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
+my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
 path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
-fpath = os.path.join(my_path, 'static/images/scatter')
+fpath = os.path.join(my_path, 'static/images')
 
 import matplotlib
 matplotlib.use('Agg')
@@ -40,7 +39,7 @@ def scatter(data):
 
     # get the path of Downloads
     # path_name = os.path.expanduser('~\Downloads')
-
+    a = 0
     for col_name in first_col:
         if col_name != set_col:
             # for each png figure create fig separetely
@@ -53,8 +52,9 @@ def scatter(data):
             yy = int_y
             plt.rcParams["figure.figsize"] = [xx, yy]
             #plt.show()
-            figure = set_col + ' vs ' + col_name
-            fig.savefig(fpath+'\\'+figure+'.png')
+            #figure = set_col + ' vs ' + col_name
+            fig.savefig(fpath+'\\'+'figure'+str(a)+'.png')
+            a = a+1
             #fig.savefig(figure + '.png')
             plt.close()
 

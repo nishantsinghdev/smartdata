@@ -4,7 +4,7 @@ import csv
 import os.path
 my_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
 path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
-fpath = os.path.join(my_path, 'static/images/dist')
+fpath = os.path.join(my_path, 'static/images')
 
 import pandas as pd
 import numpy as np
@@ -39,6 +39,7 @@ def histo(data):
     #path_name = os.path.expanduser('~\Downloads')
     #press shift + tab for backing all selected by 1 tab and press tab only for selected things to move forward
     a = 1
+    d = 0
     for num in first_col:
 
         bins = round(2*n**(1/3))
@@ -56,7 +57,8 @@ def histo(data):
         #fig.show()
         a = a+1
         #fig.savefig(num+'.png')
-        fig.savefig(fpath + '\\' + num + '.png')
+        fig.savefig(fpath + '\\' + 'image' + str(d) + '.png')
+        d = d+1
         plt.close()
         #fig.savefig(num+'.png')
-#histo('C:\\DJANGO_Projects\\file_upload\\simple-file-upload-master\\documents\\Ecommerce_Purchases.csv')
+#histo(data)

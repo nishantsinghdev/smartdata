@@ -4,7 +4,7 @@ import csv
 import os.path
 my_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
 path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
-fpath = os.path.join(my_path, 'static/images/boxplot')
+fpath = os.path.join(my_path, 'static/images')
 
 #print(my_path)
 
@@ -43,6 +43,7 @@ def box(data):
     # path_name = os.path.expanduser('~\Downloads')
 
     a = 1
+    f = 0
     for num in first_col:
         fig = plt.figure()
         sns.set_style("whitegrid")
@@ -53,8 +54,9 @@ def box(data):
         a = a + 1
         # fig.savefig(path_name+'\\'+num+'.png')
         #fig.savefig(num + '.png')
-        fig.savefig(fpath + '\\' + num + '.png')
+        fig.savefig(fpath + '\\' + 'picture' + str(f) + '.png')
+        f = f+1
         plt.close()
 
 
-box(data)
+#box(data)
