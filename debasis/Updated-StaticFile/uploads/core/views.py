@@ -53,8 +53,8 @@ def invoke(request):
 
         box.box(path)
         #creates boxplot
-        #return render(request, 'core/done.html')
-        return redirect('home')
+        #return render(request, 'core/images.html')
+        return redirect(display)  #### redirects to display method......
 
 
 def model_form_upload(request):
