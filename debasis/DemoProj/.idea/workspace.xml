@@ -9,9 +9,8 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="139" />
-    <option name="y" value="-13" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="410" />
     <option name="width" value="1079" />
     <option name="height" value="729" />
   </component>
@@ -32,7 +31,22 @@
     <panes>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="ProjectPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="DemoProj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DemoProj" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="DemoProj" type="b2602c69:ProjectViewProjectNode" />
+              <item name="DemoProj" type="462c0819:PsiDirectoryNode" />
+              <item name="DemoProj" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -67,8 +81,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="139" y="-13" width="1079" height="729" extended-state="7" />
-    <editor active="true" />
+    <frame x="410" y="0" width="1079" height="729" extended-state="0" />
     <layout>
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24975985" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
