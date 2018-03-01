@@ -18,3 +18,12 @@ def cleanImg():
     for f in files:
         os.remove(os.path.join(spath, f))
 #cleanImg()
+
+def cleanPdf():
+    my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    spath = os.path.join(my_path, 'static/pdfs')
+    files = os.listdir(spath)
+    #print(spath)
+    for f in files:
+        os.remove(os.path.join(spath, f))
+#cleanPdf()

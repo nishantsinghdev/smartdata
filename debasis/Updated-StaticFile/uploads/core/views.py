@@ -1,3 +1,4 @@
+from django.http import Http404, HttpResponse
 from django.shortcuts import render, redirect
 from django.conf import settings
 from django.core.files.storage import FileSystemStorage
@@ -8,6 +9,7 @@ from uploads.core import testdemo as tst
 from uploads.core import ssd_scatterplott as ss
 from uploads.core import BoxPlot as box
 from uploads.core import clean as cl
+from uploads.core import PdfGenerate as pg
 
 def home(request):
     ### get all the files from documents
@@ -43,8 +45,6 @@ def invoke(request):
     else:
         get = list[0]
         path = os.path.join(my_path + '\documents' + '\\' + get)
-
-
         tst.scatter(path)
         #creates Scatter Plots
 
@@ -53,13 +53,28 @@ def invoke(request):
 
         box.box(path)
         #creates boxplot
+
+        #### Creating PDF
+        pg.generate()
         #return render(request, 'core/images.html')
         return redirect(display)  #### redirects to display method......
+
+######download PDF
+def download(request):
+    my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
+    spath1 = os.path.join(my_path, 'static\\pdfs\\AllPlots.pdf')
+    if os.path.exists(spath1):
+        with open(spath1, 'rb') as fh:
+            response = HttpResponse(fh.read())
+            response['Content-Disposition'] = 'inline; filename=' + os.path.basename(spath1)
+            return response
+    raise Http404
 
 
 def model_form_upload(request):
     cl.cleanDoc()
     cl.cleanImg()
+    cl.cleanPdf()
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():

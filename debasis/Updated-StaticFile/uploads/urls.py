@@ -12,6 +12,8 @@ urlpatterns = [
     url(r'^uploads/simple/$', views.display, name='simple_upload'),
     url(r'^uploads/invoke/$', views.invoke, name='invoke'),
     url(r'^uploads/form/$', views.model_form_upload, name='model_form_upload'),
+    ###download
+    url(r'^uploads/simple/download/$', views.download, name='download'),
     path('admin/', admin.site.urls),
 ]
 
