@@ -21,14 +21,30 @@ def home(request):
 def display(request):
     import os.path
     my_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..'))
-    spath = os.path.join(my_path, 'static/images')
-    imglist = os.listdir(spath)
-    newlist = list()
-    for filename in imglist:
-        i = str('/static/images/'+filename)
-        newlist.append(i)
+    boxpath = os.path.join(my_path, 'static/images/box')
+    distpath = os.path.join(my_path, 'static/images/distplot')
+    scatterpath = os.path.join(my_path, 'static/images/scatter')
+
+    box = os.listdir(boxpath)
+    dist = os.listdir(distpath)
+    scatter = os.listdir(scatterpath)
+    boxlist = list()
+    for filename in box:
+        i = str('/static/images/box/'+filename)
+        boxlist.append(i)
+    distlist = list()
+    for filename in dist:
+        i = str('/static/images/distplot/' + filename)
+        distlist.append(i)
+    scatterlist = list()
+    for filename in scatter:
+        i = str('/static/images/scatter/' + filename)
+        scatterlist.append(i)
+
     context = {
-        'list': newlist,
+        'l1': boxlist,
+        'l2': distlist,
+        'l3': scatterlist,
     }
     #print(list)
     return render(request, 'core/images.html', context)
@@ -55,7 +71,7 @@ def invoke(request):
         #creates boxplot
 
         #### Creating PDF
-        pg.generate()
+        #pg.generate()
         #return render(request, 'core/images.html')
         return redirect(display)  #### redirects to display method......
 
@@ -74,7 +90,7 @@ def download(request):
 def model_form_upload(request):
     cl.cleanDoc()
     cl.cleanImg()
-    cl.cleanPdf()
+    #cl.cleanPdf()
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():
