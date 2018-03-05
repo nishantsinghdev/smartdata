@@ -71,7 +71,7 @@ def invoke(request):
         #creates boxplot
 
         #### Creating PDF
-        #pg.generate()
+        pg.generate()
         #return render(request, 'core/images.html')
         return redirect(display)  #### redirects to display method......
 
