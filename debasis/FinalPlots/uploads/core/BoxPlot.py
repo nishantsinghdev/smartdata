@@ -4,7 +4,7 @@ import csv
 import os.path
 my_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
 path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
-fpath = os.path.join(my_path, 'static/images')
+fpath = os.path.join(my_path, 'static/images/box')
 
 #print(my_path)
 

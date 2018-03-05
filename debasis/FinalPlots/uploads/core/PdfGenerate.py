@@ -24,7 +24,7 @@ def generate():
     ##generate in a specified directory
     #c.drawImage('D:\\githubLOCAL\\smartdata\\debasis\\Updated-StaticFile\\static\\images\\figure1.png', 10, 10, 450, 180)
     c.save()
-generate()
+#generate()
 
 
 
