@@ -1,2 +1,6 @@
 *.DS_Store
+<<<<<<< HEAD
+*.ipynb
+=======
 .DS_Store
+>>>>>>> 9e9245f4bba80a3667bcec7859b7d477442ca8d0
