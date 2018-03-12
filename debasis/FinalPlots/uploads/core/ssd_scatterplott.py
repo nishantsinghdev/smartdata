@@ -3,7 +3,7 @@
 import csv
 import os.path
 my_path = os.path.abspath(os.path.join(os.path.dirname( __file__ ), '..', '..'))
-path = os.path.join(my_path, 'documents/Ecommerce_Purchases.csv')
+path = os.path.join(my_path, 'documents/Leadss.csv')
 fpath = os.path.join(my_path, 'static/images/distplot')
 
 import pandas as pd
@@ -44,7 +44,7 @@ def histo(data):
 
         bins = round(2*n**(1/3))
         print(bins)
-        distplot=sns.distplot(pp[num])
+        distplot=sns.distplot(pp[num], )
         print(distplot)
         fig=distplot.get_figure()
         #plt.xlabel('bins '+str(a))

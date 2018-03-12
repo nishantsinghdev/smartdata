@@ -10,6 +10,10 @@ from uploads.core import ssd_scatterplott as ss
 from uploads.core import BoxPlot as box
 from uploads.core import clean as cl
 from uploads.core import PdfGenerate as pg
+from uploads.core import outliers as out
+from uploads.core import heatMap as heat
+from uploads.core import stats as st
+from uploads.core import categorical as cat
 
 def home(request):
     ### get all the files from documents
@@ -24,29 +28,58 @@ def display(request):
     boxpath = os.path.join(my_path, 'static/images/box')
     distpath = os.path.join(my_path, 'static/images/distplot')
     scatterpath = os.path.join(my_path, 'static/images/scatter')
+    outlierspath = os.path.join(my_path, 'static/images/outliers')
+    hitmappath = os.path.join(my_path, 'static/images/hitmap')
+    statisticspath = os.path.join(my_path, 'static/images/statistics')
+    categoricalspath = os.path.join(my_path, 'static/images/categorical')
 
     box = os.listdir(boxpath)
     dist = os.listdir(distpath)
     scatter = os.listdir(scatterpath)
+    outlier = os.listdir(outlierspath)
+    heatmap = os.listdir(hitmappath)
+    statistics = os.listdir(statisticspath)
+    categorical = os.listdir(categoricalspath)
+
     boxlist = list()
     for filename in box:
-        i = str('/static/images/box/'+filename)
-        boxlist.append(i)
+        boxlist.append(str('/static/images/box/' + filename))
+
     distlist = list()
     for filename in dist:
-        i = str('/static/images/distplot/' + filename)
-        distlist.append(i)
+        distlist.append(str('/static/images/distplot/' + filename))
+
     scatterlist = list()
     for filename in scatter:
-        i = str('/static/images/scatter/' + filename)
-        scatterlist.append(i)
+        scatterlist.append(str('/static/images/scatter/' + filename))
+
+    outlierlist = list()
+    for filename in outlier:
+        outlierlist.append(str('/static/images/outliers/' + filename))
+
+    heatmaplist = list()
+    for filename in heatmap:
+        heatmaplist.append(str('/static/images/hitmap/' + filename))
+
+    statisticslist = list()
+    for filename in statistics:
+        statisticslist.append(str('/static/images/statistics/' + filename))
+
+    categoricallist = list()
+    for filename in categorical:
+        categoricallist.append(str('/static/images/categorical/' + filename))
 
     context = {
         'l1': boxlist,
         'l2': distlist,
         'l3': scatterlist,
+        'l4': outlierlist,
+        'l5': heatmaplist,
+        'l6': statisticslist,
+        'l7': categoricallist,
+
     }
-    #print(list)
+    #print(heatmaplist)
     return render(request, 'core/images.html', context)
 
 ### Generates plots
@@ -70,6 +103,15 @@ def invoke(request):
         box.box(path)
         #creates boxplot
 
+        out.outliers(path)
+        #####call outliers
+
+        st.stats(path)
+
+        heat.heat_map(path)
+        cat.catg(path)
+
+
         #### Creating PDF
         pg.generate()
         #return render(request, 'core/images.html')
@@ -90,7 +132,7 @@ def download(request):
 def model_form_upload(request):
     cl.cleanDoc()
     cl.cleanImg()
-    #cl.cleanPdf()
+    cl.cleanPdf()
     if request.method == 'POST':
         form = DocumentForm(request.POST, request.FILES)
         if form.is_valid():

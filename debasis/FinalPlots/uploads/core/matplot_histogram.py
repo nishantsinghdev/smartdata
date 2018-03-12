@@ -50,4 +50,4 @@ def histo(data):
             pdf.savefig(fig)
 
 
-histo(data)
+#histo(data)
