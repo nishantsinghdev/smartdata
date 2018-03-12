@@ -43,9 +43,10 @@ def histo(data):
         bins = round(2*n**(1/3))
         print(bins)
         plt.hist(pp[num],bins,label='histogram '+str(a))
-        plt.xlabel('bins '+str(a))
-        plt.ylabel(num)
+        plt.xlabel('bins '+str(a), fontsize = 20)
+        plt.ylabel(num, fontsize = 20)
         plt.legend()
+        plt.title(num,fontsize = 20)
         plt.show()
         a = a+1
         #fig.savefig(path_name+'\\'+num+'.png')

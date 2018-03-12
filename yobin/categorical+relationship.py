@@ -48,7 +48,7 @@ def cat_relation(data):
             #title
             lb.set_title(first_col[i] + ' vs ' + first_col[j])
             plt.show()
-            fig.savefig('PIC ' + str(i)+str(j) +'.png')
+            fig.savefig('PIC' + str(i)+str(j) +'.png')
             j = j + 1
         i = i + 1
 cat_relation(data)  
